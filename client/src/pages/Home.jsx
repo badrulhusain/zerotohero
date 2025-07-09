@@ -34,7 +34,7 @@ function Home() {
 
   return (
 <div className="p-6 flex flex-col items-center justify-center">
-  <h1 className="text-3xl font-bold mb-6">🎯 Real-Time Mark Table</h1>
+  <h1 className="text-3xl font-bold mb-6">Zero to Hero</h1>
 
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     {[...candidates]
@@ -50,13 +50,13 @@ function Home() {
         let rankStyle = "";
         let rankLabel = "";
         if (index === 0) {
-          rankStyle = "border-4 border-yellow-500 shadow-lg ";
+          rankStyle = " shadow-lg ";
           rankLabel = "🥇 1st Place";
         } else if (index === 1) {
-          rankStyle = "border-4 border-gray-400 shadow-md";
+          rankStyle = "shadow-md";
           rankLabel = "🥈 2nd Place";
         } else if (index === 2) {
-          rankStyle = "border-4 border-orange-400 shadow-sm";
+          rankStyle = " shadow-sm";
           rankLabel = "🥉 3rd Place";
         }
 
