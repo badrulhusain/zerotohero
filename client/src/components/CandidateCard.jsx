@@ -2,7 +2,8 @@ import React from 'react';
 
 const CandidateCard = ({ name, image, points, id }) => {
   return (
-    <div className="bg-white shadow-lg rounded-2xl p-4 w-72 text-center hover:shadow-xl transition">
+    <div className="bg-white  shadow-lg rounded-3xl p-4 w-72 text-center hover:shadow-xl transition">
+      
       <img
         src={image}
         alt={name}

@@ -28,7 +28,7 @@ let points = [
   { candidateId: 102, points: 0 },
   // Add more as needed
 ];
-let point=Candidate.find().select("-name -image")
+
 
 app.use(express.json());
 
