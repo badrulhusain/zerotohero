@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const candidateSchema = new mongoose.Schema({
+const secondSchema = new mongoose.Schema({
     candidateId: {
         type: Number,
         required: true,
@@ -10,14 +10,10 @@ const candidateSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    image: {
-        type: String,
-        
-    },
     points: {
         type: Number,
         default: 0
     }
 });
 
-module.exports = mongoose.model('Candidate', candidateSchema);
+module.exports = mongoose.model('Second', secondSchema);

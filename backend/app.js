@@ -7,6 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const mongoose = require('mongoose');
 const Candidate = require('./models/Candidate');
+const Second = require('./models/Second');
 dotenv.config()
 
 
@@ -41,7 +42,7 @@ mongoose.connect(process.env.MONGO_URI, {
 // 🔍 API to fetch all marks
 app.get('/points', async (req, res) => {
   try {
-    const allPoints = await Candidate.find().select("candidateId points");
+    const allPoints = await Candidate.find().select("candidateId points")
     res.json(allPoints);
   } catch (error) {
     console.error(error);
@@ -50,31 +51,38 @@ app.get('/points', async (req, res) => {
 });
 
 app.post('/candidate',async(req,res)=>{
-    const {candidateId,name,image,points}=req.body;
-   if(!candidateId||!name||!image ){
+    const {candidateId,name}=req.body;
+   if(!candidateId||!name ){
     return res.status(400).json("please fill all the fields")
    }
     const candidate =await  Candidate.create({
         candidateId,
         name,
-        image,
-        points
+
 
     })
-    console.log(candidate);
+
     
 
     res.status(200).json("user created success fully",candidate)
 })
 app.get('/candidates', async (req, res) => {
   try {
-    const all = await Candidate.find();
+    const all = await Candidate.find().limit(6)
     res.json(all);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch candidates" });
   }
 });
+app.get('/delete',async (req,res)=>{
+try {
+  const del=await Candidate.deleteMany();
+  res.status(200).json("deletedsuccess fully")
+} catch (error) {
+  
+}
 
+})
 
 // 🟢 Real-time logic
 io.on('connection', (socket) => {
